@@ -1,7 +1,11 @@
-from os import getenv
-from dotenv import load_dotenv
+init_dict = {}
+
+def load_env():
+    from os import getenv
+    from dotenv import load_dotenv
+    load_dotenv()
+    return getenv("OPENAI_API_KEY")
 
 def init():
-    load_dotenv()
-    OPENAI_API_KEY = getenv("OPENAI_API_KEY")
-    return OPENAI_API_KEY
+    init_dict["OPENAI_API_KEY"] = load_env()
+    return init_dict

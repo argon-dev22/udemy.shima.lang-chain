@@ -40,7 +40,7 @@ def main():
 
     # チェーンを実行
     result = chain.run({"dish": "カレー"})
-    # print(result)
+    print(result)
 
     # 出力結果をPythonのオブジェクトにマッピング
     recipe = parser.parse(result)

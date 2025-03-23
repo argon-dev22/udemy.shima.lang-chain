@@ -35,10 +35,10 @@ def completions_model(OPENAI_API_KEY):
     response = requests.post(url=url, headers=headers, json=data)
     print(json.dumps(response.json(), indent=2))
 
-def main():
-    OPENAI_API_KEY = init()
-    # completions_model(OPENAI_API_KEY)
-    chat_model(OPENAI_API_KEY)
+def main(init_dict):
+    # completions_model(init_dict["OPENAI_API_KEY"])
+    chat_model(init_dict["OPENAI_API_KEY"])
 
 if __name__ == "__main__":
-    main()
+    init_dict = init()
+    main(init_dict)
