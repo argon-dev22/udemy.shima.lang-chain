@@ -3,8 +3,6 @@ services:
     build:
       context: .
     image: argon/udemy_shima_langchain
-    ports:
-      - "8000:8000"
     volumes:
       - ./app:/app
     command: ["sleep", "infinity"]
