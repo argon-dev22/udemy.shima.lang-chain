@@ -13,3 +13,9 @@ docker compose up -d
 ```
 docker compose exec -it app bash
 ```
+
+### 3. アプリケーションの実行
+
+```
+python3 langchain.py
+```
