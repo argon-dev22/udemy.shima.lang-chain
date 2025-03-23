@@ -1,8 +1,9 @@
+import os
 import requests
 import json
 from init import init
 
-def chat_model(OPENAI_API_KEY):
+def chat_model():
     url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Content-Type": "application/json",
@@ -19,8 +20,7 @@ def chat_model(OPENAI_API_KEY):
     response = requests.post(url=url, headers=headers, json=data)
     print(json.dumps(response.json(), indent=2))
 
-
-def completions_model(OPENAI_API_KEY):
+def completions_model():
     url = "https://api.openai.com/v1/completions"
     headers = {
         "Content-Type": "application/json",
@@ -35,10 +35,11 @@ def completions_model(OPENAI_API_KEY):
     response = requests.post(url=url, headers=headers, json=data)
     print(json.dumps(response.json(), indent=2))
 
-def main(init_dict):
-    # completions_model(init_dict["OPENAI_API_KEY"])
-    chat_model(init_dict["OPENAI_API_KEY"])
+def main():
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    # completions_model()
+    chat_model()
 
 if __name__ == "__main__":
-    init_dict = init()
-    main(init_dict)
+    init()
+    main()
