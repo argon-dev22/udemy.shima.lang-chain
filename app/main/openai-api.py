@@ -1,14 +1,12 @@
-import os
 import requests
 import json
+from init import init
 
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-
-def chat_model():
+def chat_model(OPENAI_API_KEY):
     url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
     }
     data = {
         "model": "gpt-4o",
@@ -22,11 +20,11 @@ def chat_model():
     print(json.dumps(response.json(), indent=2))
 
 
-def completions_model():
+def completions_model(OPENAI_API_KEY):
     url = "https://api.openai.com/v1/completions"
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
     }
     data = {
         "model": "gpt-3.5-turbo-instruct",
@@ -38,7 +36,9 @@ def completions_model():
     print(json.dumps(response.json(), indent=2))
 
 def main():
-   chat_model()
+    OPENAI_API_KEY = init()
+    # completions_model(OPENAI_API_KEY)
+    chat_model(OPENAI_API_KEY)
 
 if __name__ == "__main__":
     main()
