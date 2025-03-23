@@ -21,7 +21,8 @@ docker compose exec -it app bash
 ### 4. アプリケーションの実行
 
 ```
-python3 langchain.py
+cd ./main
+python3 openai-api.py
 ```
 
 ### 5. コンテナの削除
