@@ -1,3 +1,8 @@
+"""
+生のOpenAI APIを使ってChatモデルを呼び出す。
+LangChainとは無関係。
+"""
+
 import os
 import requests
 import json
