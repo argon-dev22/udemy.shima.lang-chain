@@ -2,20 +2,30 @@
 
 ## Quick Start
 
-### 1. コンテナの起動 
+### 1. 環境変数の設定
+
+.env.exampleをコピーして.envファイルを作成し、OpenAIのAPIキーを設定する。
+
+### 2. コンテナの起動 
 
 ```
 docker compose up -d
 ```
 
-### 2. コンテナにログイン
+### 3. コンテナにログイン
 
 ```
 docker compose exec -it app bash
 ```
 
-### 3. アプリケーションの実行
+### 4. アプリケーションの実行
 
 ```
 python3 langchain.py
+```
+
+### 5. コンテナの削除
+
+```
+docker compose down
 ```
