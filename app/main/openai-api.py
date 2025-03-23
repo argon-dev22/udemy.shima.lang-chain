@@ -36,10 +36,10 @@ def completions_model():
     print(json.dumps(response.json(), indent=2))
 
 def main():
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     # completions_model()
     chat_model()
 
 if __name__ == "__main__":
     init()
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     main()
