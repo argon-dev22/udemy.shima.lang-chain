@@ -40,6 +40,9 @@ def post_chat_completions_with_memory():
     from langchain.chains import ConversationChain
     from langchain.chat_models import ChatOpenAI
     from langchain.memory import ConversationBufferMemory
+    import openai
+
+    openai.log = "debug"
 
     chat = ChatOpenAI(model_name="gpt-4o", temperature=0.0, max_tokens=100)
     memory = ConversationBufferMemory()
@@ -52,10 +55,32 @@ def post_chat_completions_with_memory():
         result = conversation.predict(input=user_message)
         print(f"AI: {result}")
 
+def post_chat_completions_with_memory_changing_role():
+    from langchain.chains import ConversationChain
+    from langchain.chat_models import ChatOpenAI
+    from langchain.memory import ConversationBufferMemory
+    import openai
+
+    openai.log = "debug"
+
+    chat = ChatOpenAI(model_name="gpt-4o", temperature=0.0, max_tokens=100)
+    memory = ConversationBufferMemory()
+    conversation = ConversationChain(llm=chat, memory=memory)
+
+    while True:
+        user_message = input("You: ")
+        if user_message == "exit":
+            break
+        memory.chat_memory.add_user_message(user_message)
+        ai_message = chat(memory.chat_memory.messages)
+        memory.chat_memory.add_ai_message(ai_message.content)
+        print(f"AI: {ai_message.content}")
+
 def main():
     # post_chat_completions_without_context()
     # post_chat_completions_with_context()
     post_chat_completions_with_memory()
+    # post_chat_completions_with_memory_changing_role()
 
 if __name__ == "__main__":
     init()
