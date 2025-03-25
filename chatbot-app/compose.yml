@@ -6,3 +6,5 @@ services:
     volumes:
       - ./app:/app
     command: ["sleep", "infinity"]
+    ports:
+      - "7860:7860"

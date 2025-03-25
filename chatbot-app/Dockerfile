@@ -30,8 +30,9 @@ ENV PYTHONPATH=/${APP_ROOT_NAME}
 WORKDIR /${APP_ROOT_NAME}
 
 # Install libraries
-COPY ./${APP_ROOT_NAME}/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# TODO: Poetryで管理する
+# COPY ./${APP_ROOT_NAME}/requirements.txt .
+# RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
 COPY ./${APP_ROOT_NAME}/ .
@@ -39,4 +40,6 @@ COPY ./${APP_ROOT_NAME}/ .
 # Set alias
 RUN echo "alias py=python3" >> ~/.bashrc
 RUN echo "alias po=poetry" >> ~/.bashrc
-RUN echo "alias popy=poetry run python" >> ~/.bashrc
+RUN echo "alias popy='poetry run python'" >> ~/.bashrc
+
+EXPOSE 7860
