@@ -1,9 +1,6 @@
 FROM python:3.11-slim
 
 
-ENV alias py=python3
-
-
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -38,3 +35,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
 COPY ./${APP_ROOT_NAME}/ .
+
+# Set alias
+RUN echo "alias py=python3" >> ~/.bashrc
+RUN echo "alias po=poetry" >> ~/.bashrc

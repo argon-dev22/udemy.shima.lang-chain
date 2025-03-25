@@ -1,7 +1,5 @@
 FROM python:3.11-slim
 
-ENV alias py=python3
-
 RUN apt-get update && apt-get install -y \
     build-essential \
     gcc \
@@ -24,3 +22,5 @@ COPY ./${APP_ROOT_NAME}/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./${APP_ROOT_NAME}/ .
+
+RUN echo "alias py=python3" >> ~/.bashrc
