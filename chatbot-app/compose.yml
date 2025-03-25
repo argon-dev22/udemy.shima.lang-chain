@@ -1,0 +1,8 @@
+services:
+  app:
+    build:
+      context: .
+    image: argon/udemy_shima_langchain_chatbot-app
+    volumes:
+      - ./app:/app
+    command: ["sleep", "infinity"]
