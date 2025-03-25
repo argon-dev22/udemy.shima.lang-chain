@@ -2,12 +2,12 @@ import os
 import gradio as gr
 import src.lib.python_dotenv.init
 from src.interface import convert_to_history
-from src.chatbot_engine import chat
+from src.chatbot_engine import chat, create_index
 
 def respond(message, chat_history):
     history = convert_to_history(chat_history)
 
-    bot_message = chat(message, history)
+    bot_message = chat(message, history, index)
     chat_history.append((message, bot_message))
     return "", chat_history
 
@@ -28,5 +28,7 @@ if __name__ == "__main__":
         auth = (username, password)
     else:
         auth = None
+
+    index = create_index()
 
     demo.launch(server_name="0.0.0.0", auth=auth)
