@@ -15,13 +15,6 @@ ENV HOME=/root
 RUN curl -sSL https://install.python-poetry.org | python3 - --version 1.8.4
 ENV PATH="$HOME/.local/bin:$PATH"
 
-# Install nltk
-# WORKDIR /docker
-
-# RUN pip install --no-cache-dir nltk
-# COPY ./docker/init_nltk.py .
-# RUN python3 ./init_nltk.py
-
 
 ARG APP_ROOT_NAME=app
 
@@ -30,16 +23,21 @@ ENV PYTHONPATH=/${APP_ROOT_NAME}
 WORKDIR /${APP_ROOT_NAME}
 
 # Install libraries
-# TODO: Poetryで管理する
-# COPY ./${APP_ROOT_NAME}/requirements.txt .
-# RUN pip install --no-cache-dir -r requirements.txt
+COPY ./${APP_ROOT_NAME}/pyproject.toml ./${APP_ROOT_NAME}/poetry.lock ./
+RUN poetry install
 
 # Copy the application code
 COPY ./${APP_ROOT_NAME}/ .
+
 
 # Set alias
 RUN echo "alias py=python3" >> ~/.bashrc
 RUN echo "alias po=poetry" >> ~/.bashrc
 RUN echo "alias popy='poetry run python'" >> ~/.bashrc
 
+
 EXPOSE 7860
+
+WORKDIR /${APP_ROOT_NAME}/src/
+
+CMD ["poetry", "run", "python", "-u", "main.py"]
