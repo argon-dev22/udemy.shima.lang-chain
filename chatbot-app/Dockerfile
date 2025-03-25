@@ -39,3 +39,4 @@ COPY ./${APP_ROOT_NAME}/ .
 # Set alias
 RUN echo "alias py=python3" >> ~/.bashrc
 RUN echo "alias po=poetry" >> ~/.bashrc
+RUN echo "alias popy=poetry run python" >> ~/.bashrc
