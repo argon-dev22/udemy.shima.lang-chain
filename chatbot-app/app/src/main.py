@@ -1,3 +1,4 @@
+import os
 import gradio as gr
 import src.lib.python_dotenv.init
 from src.interface import convert_to_history
@@ -20,4 +21,12 @@ with gr.Blocks() as demo:
 
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0")
+    app_env = os.environ.get("APP_ENV", "production")
+    if app_env == "production":
+        username = os.environ.get("USERNAME")
+        password = os.environ.get("PASSWORD")
+        auth = (username, password)
+    else:
+        auth = None
+
+    demo.launch(server_name="0.0.0.0", auth=auth)
