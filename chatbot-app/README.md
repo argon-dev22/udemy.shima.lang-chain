@@ -31,8 +31,7 @@ make in
 ### 4. アプリケーションの実行
 
 ```
-cd ./main
-python3 openai-api.py
+poetry run python src/main.py
 ```
 
 ### 5. コンテナの削除
