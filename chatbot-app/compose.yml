@@ -5,7 +5,7 @@ services:
     image: argon/udemy_shima_langchain_chatbot-app
     ports:
       - "7860:7860"
-    # 開発時のみコメントアウトを解除
+    # 開発時のみ下記のコメントアウトを解除
     # volumes:
     #   - ./app:/app
     # command: ["sleep", "infinity"]
