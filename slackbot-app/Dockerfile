@@ -35,9 +35,6 @@ RUN echo "alias py=python3" >> ~/.bashrc
 RUN echo "alias po=poetry" >> ~/.bashrc
 RUN echo "alias popy='poetry run python'" >> ~/.bashrc
 
-
-EXPOSE 7860
-
 WORKDIR /${APP_ROOT_NAME}/src/
 
 CMD ["poetry", "run", "python", "-u", "main.py"]
