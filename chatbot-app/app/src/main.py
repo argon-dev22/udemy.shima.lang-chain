@@ -1,11 +1,11 @@
 import os
 import gradio as gr
 import src.lib.python_dotenv.init
-from src.interface import convert_to_history
+from src.interface import convert_to_langchain_history
 from src.chatbot_engine import chat, create_index
 
 def respond(message, chat_history):
-    history = convert_to_history(chat_history)
+    history = convert_to_langchain_history(chat_history)
 
     bot_message = chat(message, history, index)
     chat_history.append((message, bot_message))

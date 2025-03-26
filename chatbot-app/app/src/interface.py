@@ -1,6 +1,6 @@
 from langchain.memory import ChatMessageHistory
 
-def convert_to_history(chat_history: list[tuple[str, str]]) -> ChatMessageHistory:
+def convert_to_langchain_history(chat_history: list[tuple[str, str]]) -> ChatMessageHistory:
     history = ChatMessageHistory()
     for [user_message, ai_message] in chat_history:
         history.add_user_message(user_message)
