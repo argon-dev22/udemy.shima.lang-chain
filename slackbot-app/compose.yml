@@ -3,9 +3,7 @@ services:
     build:
       context: .
     image: argon/udemy_shima_langchain_slackbot-app
-    ports:
-      - "7860:7860"
     # 開発時のみ下記のコメントアウトを解除
-    volumes:
-      - ./app:/app
-    command: ["sleep", "infinity"]
+    # volumes:
+    #   - ./app:/app
+    # command: ["sleep", "infinity"]
