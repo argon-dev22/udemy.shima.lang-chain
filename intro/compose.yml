@@ -3,6 +3,7 @@ services:
     build:
       context: .
     image: argon/udemy_shima_langchain_intro
-    volumes:
-      - ./app:/app
-    command: ["sleep", "infinity"]
+    # 開発時のみ下記のコメントアウトを解除
+    # volumes:
+    #   - ./app:/app
+    # command: ["sleep", "infinity"]
